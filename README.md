@@ -9,15 +9,15 @@ Cinq onglets en bas de l'écran, comme dans une application. Chaque écran a sa 
 
 - **Accueil** : objectif du jour, série, XP, compte à rebours avant l'examen (date à saisir), **mot du jour** avec une phrase d'exemple, astuce du jour et bouton « Continuer ».
 - **Exercices** : toutes les activités, rangées par catégorie.
-- **Cours** : cours de grammaire des leçons 1 à 12, avec conseils et pièges à éviter, puis un quiz de grammaire et un exercice de mots en ordre.
+- **Cours** : cours de grammaire des leçons 1 à 12, une leçon à la fois (boutons 1 à 12), avec conseils et pièges à éviter, puis un quiz de grammaire et un exercice de mots en ordre.
 - **Progrès** : mots acquis, badges (un par leçon), records, liste des mots difficiles.
 - **Réglages** : confort de lecture, export et import de la progression, effacement des données.
 
-Le sélecteur en haut permet de choisir les leçons à réviser (1–7, 8–12, tout, une leçon, ou « Mots difficiles »).
+Le bouton « Je révise » en haut ouvre un panneau pour choisir les leçons (1–7, 8–12, tout, une leçon, ou « Mots difficiles »).
 
 ## Exercices
 
-- **Apprendre** : cartes (glisser à droite = je savais), fiche surlignable avec l'audio de chaque mot.
+- **Apprendre** : cartes (glisser à droite = je savais), fiche surlignable avec l'audio de chaque mot, une recherche et des raccourcis vers chaque leçon.
 - **S'entraîner** : quiz, phrases à compléter, intrus, syllabes, écriture (mots et phrases entières), paires.
 - **Écoute et prononciation** :
   - **Écoute** : entendre un mot, trouver son sens ;
@@ -25,7 +25,13 @@ Le sélecteur en haut permet de choisir les leçons à réviser (1–7, 8–12, 
   - **Compréhension** : entendre une phrase sans la voir et choisir sa traduction ;
   - **Prononciation** : 40 mots pour s'entraîner aux règles (liaison, aspiration, nasalisation, consonnes tendues, finales doubles…), avec l'explication de la règle ;
   - **Répète et compare** : s'enregistrer avec le micro, puis réécouter le modèle et sa propre voix. L'enregistrement reste sur l'appareil, il n'est ni envoyé ni gardé.
-- **Défis** : chrono de 60 secondes et **examen blanc** de 15 minutes (20 mots + 10 questions de grammaire) avec une note sur 20.
+- **Défis** : chrono de 60 secondes et **examen blanc** :
+  - 30 questions en 4 parties : vocabulaire (12), grammaire (8), écoute (6, chaque son s'écoute 2 fois au maximum), lecture (4) ;
+  - 20 minutes, ou sans chrono si l'option « Masquer le mode Chrono » est cochée ;
+  - on peut revenir en arrière, changer une réponse, marquer une question et voir la vue d'ensemble ;
+  - le bilan donne la note sur 20, le score par partie, les leçons à revoir en priorité, les corrections avec l'audio et la comparaison avec l'examen précédent.
+
+  Ce n'est pas le format officiel de l'examen, seulement un entraînement.
 - **Révision du jour** : répétition espacée. Chaque mot revient le lendemain, puis 2, 4, 8 et 16 jours après tant qu'il est réussi.
 
 ## Audio
@@ -40,6 +46,9 @@ Chaque mot (285), chaque phrase d'exemple, chaque exemple de grammaire et chaque
 Ce sont des **voix de synthèse neuronales** (Microsoft Edge TTS : SunHi pour les mots, InJoon pour les phrases), pas des enregistrements de personnes. La prononciation est soignée mais peut parfois différer de celle du professeur : en cas de doute, fie-toi à ton cours.
 
 ## Accessibilité
+
+Pensé d'abord pour le téléphone : zones à toucher d'au moins 44 px, contrastes d'au moins 4,5:1 en clair, sombre et contraste élevé.
+
 
 Polices Atkinson Hyperlegible et Lexend, taille du texte, interligne, espacement des lettres, thème clair / sombre / contraste élevé, option pour masquer le Chrono.
 
