@@ -21,7 +21,7 @@ Le bouton « Je révise » en haut ouvre un panneau pour choisir le manuel (1A, 
 ## Exercices
 
 - **Apprendre** : cartes (glisser à droite = je savais), fiche surlignable avec l'audio de chaque mot, une recherche et des raccourcis vers chaque leçon.
-- **S'entraîner** : quiz, phrases à compléter, intrus, syllabes, écriture (mots et phrases entières), paires.
+- **S'entraîner** : quiz, **expressions** (retrouver le mot qui manque dans une expression comme 이삿짐을 ___ : surtout utile en 3A et 3B), phrases à compléter, intrus, syllabes, écriture (mots et phrases entières), paires.
 - **Écoute et prononciation** :
   - **Écoute** : entendre un mot, trouver son sens ;
   - **Dictée** : entendre un mot ou une phrase et l'écrire en coréen ;
@@ -37,9 +37,11 @@ Le bouton « Je révise » en haut ouvre un panneau pour choisir le manuel (1A, 
   Ce n'est pas le format officiel de l'examen, seulement un entraînement.
 - **Révision du jour** : répétition espacée. Chaque mot revient le lendemain, puis 2, 4, 8 et 16 jours après tant qu'il est réussi.
 
+En 3A et 3B, les leçons faites surtout d'expressions ont des phrases à compléter avec la forme conjuguée (승진했어요, 셔요…).
+
 ## Audio
 
-Chaque mot (1A et 1B), chaque phrase d'exemple, chaque exemple de grammaire et chaque mot de l'exercice de prononciation a son fichier audio : 2 193 fichiers MP3 dans le dossier `audio/` (36 Mo).
+Chaque mot (1A et 1B), chaque phrase d'exemple, chaque exemple de grammaire et chaque mot de l'exercice de prononciation a son fichier audio : 2 228 fichiers MP3 dans le dossier `audio/` (36 Mo).
 
 - Un bouton d'écoute apparaît à côté du coréen : cartes, quiz, fiche (à côté de chaque mot), phrases, cours, mot du jour, corrections.
 - Dans les exercices d'écoute, un bouton « Plus lentement » rejoue le son à 70 % de la vitesse.
@@ -75,6 +77,6 @@ Seules les polices de lecture se chargent depuis Internet ; sans connexion, la p
 - **1A** : le vocabulaire (390 mots) suit la liste du dictionnaire officiel du manuel 1A de l'Institut Roi Sejong, traduite en français. Pour les jours du mois, seule une sélection est reprise (le 1er, le 2, le 3, le 5, le 15, le 20, le 30, le 31).
 - **2A** : le vocabulaire (223 mots) suit la liste du dictionnaire officiel du manuel 2A, traduite en français ; les 24 points de grammaire sont expliqués en français avec nos propres exemples.
 - **3B** : le vocabulaire (263 mots et expressions) suit la liste du dictionnaire officiel du manuel 3B (édition ouzbek : les mots coréens ont été traduits en français par nos soins) ; la liste des 24 points de grammaire vient du sommaire du manuel 3B, avec des explications et des exemples rédigés par nous.
-- **3A** : le vocabulaire (218 mots et expressions) suit la liste du dictionnaire officiel du manuel 3A, traduite en français ; les 24 points de grammaire sont expliqués en français avec nos propres exemples. Les leçons 2, 10 et 11 n'ont pas de phrases à compléter (leur vocabulaire est fait d'expressions verbales).
+- **3A** : le vocabulaire (218 mots et expressions) suit la liste du dictionnaire officiel du manuel 3A, traduite en français ; les 24 points de grammaire sont expliqués en français avec nos propres exemples.
 - **2B** : le vocabulaire (240 mots) suit la liste du dictionnaire officiel du manuel 2B, traduite en français ; les 24 points de grammaire sont expliqués en français avec nos propres exemples.
 - Les cours, conseils, exercices et phrases d'exemple sont rédigés par des élèves d'après le plan du manuel (King Sejong Institute) : ils ne reprennent pas le texte du livre et peuvent contenir des erreurs. En cas de doute, le livre et le professeur font foi.
