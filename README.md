@@ -10,7 +10,8 @@ Projet d'élèves, **non officiel** : il n'est pas affilié aux éditeurs du man
 Cinq onglets en bas de l'écran, comme dans une application. Chaque écran a sa propre adresse (`#quiz`, `#dict`…) : le bouton « retour » du navigateur ou du téléphone ramène à l'écran précédent.
 
 - **Accueil** : objectif du jour, série, XP, compte à rebours avant l'examen (date à saisir), **mot du jour** avec une phrase d'exemple, astuce du jour et bouton « Continuer ».
-- **Exercices** : toutes les activités, rangées par catégorie.
+- **Exercices** : en haut, le bloc **« Pour toi aujourd'hui »** propose la révision du jour, la leçon la plus faible (d'après le dernier examen blanc ou tes erreurs) et ton dernier exercice ; en dessous, toutes les activités rangées par catégorie.
+- **Fin d'exercice** : score, XP gagnés, mots acquis, série, objectif du jour, et un bouton vers l'exercice suivant.
 - **Cours** : cours de grammaire du manuel choisi, une leçon à la fois, avec conseils et pièges à éviter, puis un quiz de grammaire et un exercice de mots en ordre.
 - **Progrès** : mots acquis, badges (un par leçon), records, liste des mots difficiles.
 - **Réglages** : confort de lecture, export et import de la progression, effacement des données.
