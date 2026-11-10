@@ -1,4 +1,4 @@
-# Sejong Korean 1B — Révisions 한국어
+# Sejong Korean 1B : révisions 한국어
 
 Application web de révision du manuel **Sejong Korean 1B** (leçons 1 à 12), en français.
 Projet d'élèves, **non officiel** : il n'est pas affilié aux éditeurs du manuel.
@@ -18,9 +18,19 @@ Le sélecteur en haut permet de choisir les leçons à réviser (1–7, 8–12, 
 ## Exercices
 
 - **Apprendre** : cartes (glisser à droite = je savais), fiche surlignable, liste avec recherche.
-- **S'entraîner** : quiz, phrases à compléter, intrus, syllabes, écriture (mots et phrases entières), paires.
+- **S'entraîner** : quiz, **écoute** (entendre un mot, trouver son sens), phrases à compléter, intrus, syllabes, écriture (mots et phrases entières), paires.
 - **Défis** : chrono de 60 secondes et **examen blanc** de 15 minutes (20 mots + 10 questions de grammaire) avec une note sur 20.
 - **Révision du jour** : répétition espacée. Chaque mot revient le lendemain, puis 2, 4, 8 et 16 jours après tant qu'il est réussi.
+
+## Audio
+
+Chaque mot (285), chaque phrase d'exemple et chaque exemple de grammaire a son fichier audio : 401 fichiers MP3 dans le dossier `audio/` (6 Mo).
+
+- Un bouton d'écoute apparaît à côté du coréen : cartes, quiz, fiche, liste, phrases, cours, mot du jour, corrections.
+- Le coréen est lu automatiquement après chaque réponse. On peut couper la lecture automatique dans **Réglages** ; les boutons restent disponibles.
+- Pendant l'examen blanc, rien n'est lu (pour ne pas souffler la réponse) ; le son revient sur la page de résultats.
+
+Ce sont des **voix de synthèse neuronales** (Microsoft Edge TTS : SunHi pour les mots, InJoon pour les phrases), pas des enregistrements de personnes. La prononciation est soignée mais peut parfois différer de celle du professeur : en cas de doute, fie-toi à ton cours.
 
 ## Accessibilité
 
@@ -28,11 +38,11 @@ Polices Atkinson Hyperlegible et Lexend, taille du texte, interligne, espacement
 
 ## Publication sur GitHub Pages
 
-1. Dépose `index.html` à la racine du dépôt (le site entier tient dans ce seul fichier).
+1. Dépose `index.html` et le dossier `audio/` à la racine du dépôt (le code tient dans `index.html`, les sons sont dans `audio/`).
 2. Dans **Settings → Pages**, choisis la branche `main` et le dossier `/ (root)`.
 3. Le site est en ligne après une ou deux minutes.
 
-Seules les polices de lecture se chargent depuis Internet ; sans connexion, la police standard est utilisée.
+Seules les polices de lecture se chargent depuis Internet ; sans connexion, la police standard est utilisée. L'audio est servi par le site lui-même.
 
 ## Données et vie privée
 
