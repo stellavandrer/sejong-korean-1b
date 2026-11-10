@@ -1,6 +1,6 @@
-# Sejong Korean 1A, 1B et 2A : révisions 한국어
+# Sejong Korean 1A, 1B, 2A et 2B : révisions 한국어
 
-Application web de révision des manuels **Sejong Korean 1A** (leçons 1 à 10), **Sejong Korean 1B** (leçons 1 à 12) et **Sejong Korean 2A** (leçons 1 à 12), en français.
+Application web de révision des manuels **Sejong Korean 1A** (leçons 1 à 10), **Sejong Korean 1B** (leçons 1 à 12), **Sejong Korean 2A** (leçons 1 à 12) et **Sejong Korean 2B** (leçons 1 à 12), en français.
 
 On choisit le manuel dans le panneau « Je révise » en haut de l'écran. Chaque manuel garde **sa propre progression** (série, XP, mots acquis, examens) : passer de l'un à l'autre n'efface rien.
 Projet d'élèves, **non officiel** : il n'est pas affilié aux éditeurs du manuel.
@@ -16,7 +16,7 @@ Cinq onglets en bas de l'écran, comme dans une application. Chaque écran a sa 
 - **Progrès** : mots acquis, badges (un par leçon), records, liste des mots difficiles.
 - **Réglages** : confort de lecture, export et import de la progression, effacement des données.
 
-Le bouton « Je révise » en haut ouvre un panneau pour choisir le manuel (1A, 1B ou 2A) et les leçons (une moitié du manuel, tout, une leçon, ou « Mots difficiles »).
+Le bouton « Je révise » en haut ouvre un panneau pour choisir le manuel (1A, 1B, 2A ou 2B) et les leçons (une moitié du manuel, tout, une leçon, ou « Mots difficiles »).
 
 ## Exercices
 
@@ -39,7 +39,7 @@ Le bouton « Je révise » en haut ouvre un panneau pour choisir le manuel (1A, 
 
 ## Audio
 
-Chaque mot (1A et 1B), chaque phrase d'exemple, chaque exemple de grammaire et chaque mot de l'exercice de prononciation a son fichier audio : 1 220 fichiers MP3 dans le dossier `audio/` (18 Mo).
+Chaque mot (1A et 1B), chaque phrase d'exemple, chaque exemple de grammaire et chaque mot de l'exercice de prononciation a son fichier audio : 1 566 fichiers MP3 dans le dossier `audio/` (24 Mo).
 
 - Un bouton d'écoute apparaît à côté du coréen : cartes, quiz, fiche (à côté de chaque mot), phrases, cours, mot du jour, corrections.
 - Dans les exercices d'écoute, un bouton « Plus lentement » rejoue le son à 70 % de la vitesse.
@@ -74,4 +74,5 @@ Seules les polices de lecture se chargent depuis Internet ; sans connexion, la p
 - **1B** : le vocabulaire vient de la fiche distribuée en cours.
 - **1A** : le vocabulaire (390 mots) suit la liste du dictionnaire officiel du manuel 1A de l'Institut Roi Sejong, traduite en français. Pour les jours du mois, seule une sélection est reprise (le 1er, le 2, le 3, le 5, le 15, le 20, le 30, le 31).
 - **2A** : le vocabulaire (223 mots) suit la liste du dictionnaire officiel du manuel 2A, traduite en français ; les 24 points de grammaire sont expliqués en français avec nos propres exemples.
+- **2B** : le vocabulaire (240 mots) suit la liste du dictionnaire officiel du manuel 2B, traduite en français ; les 24 points de grammaire sont expliqués en français avec nos propres exemples.
 - Les cours, conseils, exercices et phrases d'exemple sont rédigés par des élèves d'après le plan du manuel (King Sejong Institute) : ils ne reprennent pas le texte du livre et peuvent contenir des erreurs. En cas de doute, le livre et le professeur font foi.
