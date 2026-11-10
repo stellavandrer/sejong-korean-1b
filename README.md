@@ -17,7 +17,7 @@ Le sélecteur en haut permet de choisir les leçons à réviser (1–7, 8–12, 
 
 ## Exercices
 
-- **Apprendre** : cartes (glisser à droite = je savais), fiche surlignable, liste avec recherche.
+- **Apprendre** : cartes (glisser à droite = je savais), fiche surlignable avec l'audio de chaque mot.
 - **S'entraîner** : quiz, phrases à compléter, intrus, syllabes, écriture (mots et phrases entières), paires.
 - **Écoute et prononciation** :
   - **Écoute** : entendre un mot, trouver son sens ;
