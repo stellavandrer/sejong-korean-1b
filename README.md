@@ -39,6 +39,16 @@ Le bouton « Je révise » en haut ouvre un panneau pour choisir le manuel (1A, 
 
 En 3A et 3B, les leçons faites surtout d'expressions ont des phrases à compléter avec la forme conjuguée (승진했어요, 셔요…).
 
+## Des pièges partout
+
+Les mauvaises réponses ne sont jamais tirées au hasard :
+- **Quiz, Chrono, Révision du jour, examen (vocabulaire)** : des mots qui s'écrivent presque pareil (병원 / 병 / 변명), jamais le même mot coréen avec un autre sens ;
+- **Écoute** : des mots qui se prononcent presque pareil (넓다 / 넣다 / 짧다) ;
+- **Compréhension, examen (écoute et lecture)** : des phrases qui partagent les mêmes mots, et des traductions pièges au sens inversé (« Séoul est plus chaud que Jeju ») ;
+- **Phrases à compléter** : uniquement des mots qui vont avec la particule après le trou (를 → mot qui finit par une voyelle, 을 → par une consonne), pour qu'elle ne trahisse pas la réponse ;
+- **Intrus** : l'intrus ressemble aux mots du groupe ;
+- **Quiz de grammaire, Prononciation, Expressions** : erreurs typiques écrites à la main, et jamais une deuxième bonne réponse.
+
 ## Audio
 
 Chaque mot (1A et 1B), chaque phrase d'exemple, chaque exemple de grammaire et chaque mot de l'exercice de prononciation a son fichier audio : 2 228 fichiers MP3 dans le dossier `audio/` (36 Mo).

@@ -201,7 +201,7 @@ function fl(){const w=K.d[K.i],q=K.dir==='ko'?w.ko:mk(w.fr),a=K.dir==='ko'?w.fr:
 // Quiz engine (normal + chrono)
 function ask(){const w=K.d[K.i%K.d.length],fr=K.listen||(S.qd==='fk'?false:S.qd==='kf'?true:Math.random()<.5),txt=x=>fr?mk(x.fr):x.ko,ans=txt(w);
  const near=sh(A.filter(x=>txt(x)!==ans)),opts=sh([w,...near.filter(x=>x.l===w.l||Math.random()<.3).slice(0,3)].concat(near).filter((x,i,a)=>a.findIndex(y=>txt(y)===txt(x))===i).slice(0,4));
- if(!opts.includes(w))opts[0]=w;K.q={w,fr,ans,opts:K.listen?listenOpts(w):sh(opts),txt};K.done=false;drawQ()}
+ if(!opts.includes(w))opts[0]=w;K.q={w,fr,ans,opts:K.listen?listenOpts(w):quizOpts(w,txt),txt};K.done=false;drawQ()}
 function drawQ(){const{w,fr,opts,txt}=K.q,t=K.timed;
  set(`<div class="card"><div class="bar" style="justify-content:space-between;margin:0"><span class="mut">${t?ic('timer')+' <b id="tm">'+K.t+'</b> s':'Question '+(K.i+1)+' / '+K.n}</span><span class="mut">Score : ${K.s}</span></div>
  <div class="pb"><i style="width:${t?K.t/60*100:K.i/K.n*100}%"></i></div><div class="c">${K.listen?`<div class="mut" style="margin-top:10px">Écoute le mot et choisis son sens</div><div class="lsn"><button id="pl" class="play" aria-label="Réécouter le mot">${ic('vol',38)}</button><button data-slow="${w.ko}">Plus lentement</button></div>`:`<div class="mut">${fr?'Que veut dire…':'Comment dit-on…'}</div><div class="big ${fr?'ko':''}">${fr?w.ko+sb(w.ko):mk(w.fr)}</div>`}</div>
@@ -272,7 +272,7 @@ function endCard(v,main,sub,extra){const xp=Math.max(0,(S.xp||0)-(SX?SX.xp:0)),n
 function fin(s,n,v){const p=Math.round(s/n*100);endCard(v,`${s} / ${n}`,`${p} % de réussite. ${p>=90?'Excellent !':p>=70?'Très bien, continue !':'Continue, tu progresses.'}`)}
 // Phrases à trous
 V.fill=()=>{const P=pool(),d=sh(EX.filter(x=>P.some(w=>w.ko===x[3]&&w.l===x[0])));if(!d.length){set(`<div class='card c'><p>Pas de phrases pour cette sélection : choisis des leçons entières.</p>${exprOK()?`<button class='p' data-gt='expr'>${ic('type')} Essayer l’exercice Expressions</button>`:''}</div>`);return}K={d,i:0,s:0,n:Math.min(10,d.length)};fq()};
-function fq(){const x=K.d[K.i],a=exa(x);let o;if(x[4]){const sf=sh(EX.filter(y=>y[4]&&y[4]!==a));o=sh([a,...[...new Set([...sf.filter(y=>y[0]===x[0]),...sf].map(exa))].slice(0,3)])}else{const c=sh(A.filter(w=>w.ko!==x[3]&&!w.ko.endsWith('다')&&!w.ko.includes(' ')));o=sh([a,...[...new Set([...c.filter(w=>w.l===x[0]),...c].map(w=>w.ko))].slice(0,3)])}K.x=x;K.o=o;K.done=false;
+function fq(){const x=K.d[K.i],a=exa(x);let o;if(x[4]){const sf=sh(EX.filter(y=>y[4]&&y[4]!==a));o=sh([a,...[...new Set([...sf.filter(y=>y[0]===x[0]),...sf].map(exa))].slice(0,3)])}else{o=fillOpts(x)}K.x=x;K.o=o;K.done=false;
  set(`<div class='card'><div class='bar' style='justify-content:space-between;margin:0'><span class='mut'>Phrase ${K.i+1} / ${K.n}</span><span class='mut'>Score : ${K.s}</span></div><div class='pb'><i style='width:${K.i/K.n*100}%'></i></div><div class='c'><div class='mut'>Complète la phrase</div><div class='bl ko'>${x[1].replace('___','<u>&emsp;&emsp;</u>')}</div><div class='mut'>${x[2]}</div></div>${o.map((t,i)=>`<button class='ch ko' data-i='${i}'>${t}</button>`).join('')}<div id='fbk'></div></div>`);
  document.querySelectorAll('.ch').forEach(b=>b.onclick=()=>fp(+b.dataset.i))}
 function fp(i){if(K.done)return;K.done=true;const x=K.x,ok=K.o[i]===exa(x);rec(A.find(w=>w.ko===x[3]&&w.l===x[0]),ok);if(ok)K.s++;
@@ -396,7 +396,7 @@ function gwc(){const ok=K.a.map(o=>o.c).join(' ')===K.full;K.done=true;if(ok)K.s
 const dueList=()=>A.filter(w=>{const r=S.w[w.k];return r&&(!r.due||r.due<=today())});
 V.daily=()=>{const d=sh(dueList());if(!d.length){set(`<div class='card c'><div class='big'>${ic('check',44)}</div><p><b>Rien à réviser aujourd’hui.</b><br><span class='mut'>Reviens demain, ou lance un quiz pour apprendre de nouveaux mots.</span></p><button class='p' data-go='quiz'>Lancer un quiz</button></div>`);document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));return}K={d,i:0,s:0,n:Math.min(20,d.length),miss:[],timed:false};ask()};
 const CAT=BK==='1A'?CAT_1A:BK==='2A'?CAT_2A:BK==='2B'?CAT_2B:BK==='3A'?CAT_3A:BK==='3B'?CAT_3B:[['Vêtements',['티셔츠','청바지','치마','정장','바지','운동복']],['Plats',['김치찌개','된장찌개','냉면','볶음밥','잡채','떡볶이','초밥','햄버거']],['Corps',['눈','귀','코','입','목','팔','손','다리','발']],['Transports',['택시','기차','지하철','배','비행기','오토바이']],['Lieux',['은행','사무실','병원','약국','시청','공항','호텔','미술관','우체국','빵집']],['Tailles et formes',['크다','작다','넓다','좁다','높다','낮다','길다','짧다']],['Déplacements',['올라가다','내려가다','나가다','들어가다','돌아가다','건너가다']],['Santé',['감기','기침','콧물','증상','열이 나다']],['Voyage',['여권','수영복','선글라스','등산화']],['Nature',['산','섬','호수','도시']],['Fêtes',['졸업식','어버이날','어린이날','명절','입학식','결혼식']],['Cadeaux et objets',['지갑','게임기','인형','편지','카드']]];
-V.odd=()=>{const P=new Set(pool().map(w=>w.ko)),mk3=f=>CAT.map(([n,l])=>[n,l.filter(f)]).filter(c=>c[1].length>=3);let C=mk3(k=>P.has(k));if(C.length<2)C=mk3(k=>A.some(w=>w.ko===k));const d=[];for(let i=0;i<10;i++){const g=sh(C)[0],o=sh(C.filter(c=>c!==g))[0],odd=sh(o[1])[0];d.push({g:g[0],oc:o[0],odd,o:sh([...sh(g[1]).slice(0,3),odd])})}K={d,i:0,s:0,n:10};oq()};
+V.odd=()=>{const P=new Set(pool().map(w=>w.ko)),mk3=f=>CAT.map(([n,l])=>[n,l.filter(f)]).filter(c=>c[1].length>=3);let C=mk3(k=>P.has(k));if(C.length<2)C=mk3(k=>A.some(w=>w.ko===k));const d=[];for(let i=0;i<10;i++){const g=sh(C)[0],g3=sh(g[1]).slice(0,3),cand=C.filter(c=>c!==g).flatMap(c=>c[1].map(k=>[c[0],k,g3.reduce((t,m)=>t+soundSim(k,m),0)+Math.random()*.3])).sort((a,b)=>b[2]-a[2]).slice(0,3),pk1=cand[Math.random()*cand.length|0];d.push({g:g[0],oc:pk1[0],odd:pk1[1],o:sh([...g3,pk1[1]])})}K={d,i:0,s:0,n:10};oq()};
 function oq(){const x=K.d[K.i];K.done=false;set(`<div class='card'><div class='bar' style='justify-content:space-between;margin:0'><span class='mut'>Question ${K.i+1} / ${K.n}</span><span class='mut'>Score : ${K.s}</span></div><div class='pb'><i style='width:${K.i/K.n*100}%'></i></div><div class='c'><div class='mut'>Quel mot n’appartient pas au groupe ?</div></div>${x.o.map((t,i)=>`<button class='ch ko' data-i='${i}'>${t}</button>`).join('')}<div id='fbk'></div></div>`);document.querySelectorAll('.ch').forEach(b=>b.onclick=()=>op(+b.dataset.i))}
 function op(i){if(K.done)return;K.done=true;const x=K.d[K.i],ok=x.o[i]===x.odd,tr=k=>{const w=A.find(w=>w.ko===k);return w?mk(w.fr):''};if(ok)K.s++;tick(ok);
  document.querySelectorAll('.ch').forEach((b,j)=>{b.disabled=true;if(x.o[j]===x.odd)b.classList.add('good');else if(j===i)b.classList.add('bad')});
@@ -406,7 +406,7 @@ const SEC={v:'Vocabulaire',g:'Grammaire',e:'Écoute',r:'Lecture'};
 const scl=v=>v==='hard'?'Mots difficiles':rl(v);
 function exq(){const P=pool(),L=lessonsOf(),pk=(a,n)=>sh(a).slice(0,n),frO=x=>sentOpts(x);
  const wO=(w,txt)=>{const a=txt(w),o=[a];for(const x of [...sh(A.filter(y=>y.l===w.l)),...sh(A)]){if(o.length>=4)break;const t=txt(x);if(!o.includes(t))o.push(t)}return sh(o)};
- const v=pk(P,12).map(w=>{const k=Math.random()<.5,txt=x=>k?mk(x.fr):x.ko;return{t:'v',w,l:w.l,kp:k,p:k?w.ko:mk(w.fr),h:k?'Que veut dire ce mot ?':'Comment dit-on en coréen ?',o:wO(w,txt),ko_o:!k,a:txt(w),ko:w.ko,tag:w.ko+' = '+w.fr}});
+ const v=pk(P,12).map(w=>{const k=Math.random()<.5,txt=x=>k?mk(x.fr):x.ko;return{t:'v',w,l:w.l,kp:k,p:k?w.ko:mk(w.fr),h:k?'Que veut dire ce mot ?':'Comment dit-on en coréen ?',o:quizOpts(w,txt).map(txt),ko_o:!k,a:txt(w),ko:w.ko,tag:w.ko+' = '+w.fr}});
  const g=pk(GX.filter(x=>L.has(x[0])),8).map(x=>({t:'g',l:x[0],kp:1,p:x[1].replace('___','＿＿'),h:x[2],o:sh([x[3],...x[4]]),ko_o:1,a:x[3],ko:x[1].includes('→')?x[1].split('→')[0].trim():x[1].replace('___',x[3]),tag:x[1].replace('___',x[3])}));
  const ew=pk(P.filter(w=>!v.some(q=>q.w===w)),3).map(w=>({t:'e',w,l:w.l,h:'Écoute le mot : que veut-il dire ?',o:listenOpts(w).map(x=>mk(x.fr)),a:mk(w.fr),ko:w.ko,tag:w.ko+' = '+w.fr,pl:0}));
  const SS=sh(SENT.filter(x=>L.has(x.l))),es=SS.slice(0,3).map(x=>({t:'e',l:x.l,h:'Écoute la phrase : que veut-elle dire ?',o:frO(x),a:x.fr,ko:x.ko,tag:x.ko+' = '+x.fr,pl:0}));
@@ -604,6 +604,17 @@ const ktok=s=>s.replace(/[.?!,]/g,'').split(' ').map(t=>[...t].slice(0,2).join('
 function sentOpts(x){const tr=sh((TRAPS[x.ko]||[]).filter(t=>t!==x.fr)).slice(0,1),kt=new Set(ktok(x.ko)),ft=new Set(ftok(x.fr)),seen=new Set([x.fr,...tr]),pick=[];
  const cand=SENT.filter(y=>y.ko!==x.ko).map(y=>[y,ktok(y.ko).filter(t=>kt.has(t)).length*2+ftok(y.fr).filter(t=>ft.has(t)).length+(y.l===x.l?.5:0)+Math.random()*.8]).sort((a,b)=>b[1]-a[1]);
  for(const[y]of cand){if(pick.length+tr.length>=3)break;if(!seen.has(y.fr)){seen.add(y.fr);pick.push(y.fr)}}return sh([x.fr,...tr,...pick])}
+
+// ===== Pièges partout : quiz et phrases à compléter =====
+// Quiz : les mauvais choix sont des mots qui s'écrivent presque pareil (병원 / 병 / 변명), jamais le même mot coréen.
+function quizOpts(w,txt){const a=txt(w),seen=new Set([a]),pick=[],cand=A.filter(x=>x.ko!==w.ko).map(x=>[x,soundSim(w.ko,x.ko)+(x.l===w.l?.08:0)+Math.random()*.1]).sort((p,q)=>q[1]-p[1]);
+ for(const[x]of cand){if(pick.length>=5)break;const t=txt(x);if(!seen.has(t)){seen.add(t);pick.push(x)}}return sh([w,...sh(pick).slice(0,3)])}
+// Phrases à compléter : la particule après le trou ne doit pas trahir la réponse (를 → mot qui finit par une voyelle, 을 → par une consonne…).
+const batchim=k=>{const c=k.charCodeAt(k.length-1)-0xAC00;return c>=0&&c<=11171?c%28:-1};
+function needOf(after){if(/^(을|이|은|과|으로|이에요|이야|이라|이랑|이나)/.test(after))return'B';if(/^로/.test(after))return'VR';if(/^(를|가|는|와|예요|야|라|랑|나)/.test(after))return'V';return null}
+function fillOpts(x){const a=x[3],need=needOf((x[1].split('___')[1]||'')),ok=k=>{const f=batchim(k);if(f<0||!need)return true;return need==='B'?f>0:need==='V'?f===0:(f===0||f===8)};
+ const cand=A.filter(w=>w.ko!==a&&!w.ko.endsWith('다')&&!w.ko.includes(' ')&&ok(w.ko)).map(w=>[w.ko,(w.l===x[0]?.6:0)+soundSim(a,w.ko)*.6+Math.random()*.5]).sort((p,q)=>q[1]-p[1]),seen=new Set([a]),pick=[];
+ for(const[k]of cand){if(pick.length>=3)break;if(!seen.has(k)){seen.add(k);pick.push(k)}}return sh([a,...pick])}
 addEventListener('popstate',()=>go(location.hash.slice(1)||'home',1));
 document.querySelector('h1 small').textContent='SEJONG '+BK;document.title='Sejong '+BK+' : révisions';
 apply();{const h=location.hash.slice(1);if(!V[h]){try{history.replaceState(null,'','#home')}catch(e){}}go(V[h]?h:'home',1)}
