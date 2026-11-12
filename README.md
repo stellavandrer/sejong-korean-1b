@@ -23,9 +23,9 @@ Le bouton « Je révise » en haut ouvre un panneau pour choisir le manuel (1A, 
 - **Apprendre** : cartes (glisser à droite = je savais), fiche surlignable avec l'audio de chaque mot, une recherche et des raccourcis vers chaque leçon.
 - **S'entraîner** : quiz, **expressions** (retrouver le mot qui manque dans une expression comme 이삿짐을 ___ : surtout utile en 3A et 3B), phrases à compléter, intrus, syllabes, écriture (mots et phrases entières), paires.
 - **Écoute et prononciation** :
-  - **Écoute** : entendre un mot, trouver son sens ;
+  - **Écoute** : entendre un mot, trouver son sens ; les autres choix sont des mots qui se prononcent presque pareil (넓다 / 넣다 / 짧다), il faut donc bien écouter ;
   - **Dictée** : entendre un mot ou une phrase et l'écrire en coréen ;
-  - **Compréhension** : entendre une phrase sans la voir et choisir sa traduction ;
+  - **Compréhension** : entendre une phrase sans la voir et choisir sa traduction ; les autres choix reprennent les mêmes mots, et 78 phrases ont une traduction piège au sens inversé (« Séoul est plus chaud que Jeju » au lieu de « Jeju est plus chaud que Séoul ») : il faut comprendre le sens, pas seulement reconnaître un mot. Même chose dans la partie Écoute et Lecture de l'examen blanc ;
   - **Prononciation** : 40 mots pour s'entraîner aux règles (liaison, aspiration, nasalisation, consonnes tendues, finales doubles…), avec l'explication de la règle ;
   - **Répète et compare** : s'enregistrer avec le micro, puis réécouter le modèle et sa propre voix. L'enregistrement reste sur l'appareil, il n'est ni envoyé ni gardé.
 - **Défis** : chrono de 60 secondes et **examen blanc** :
