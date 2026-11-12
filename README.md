@@ -28,11 +28,12 @@ Le bouton « Je révise » en haut ouvre un panneau pour choisir le manuel (1A, 
   - **Compréhension** : entendre une phrase sans la voir et choisir sa traduction ; les autres choix reprennent les mêmes mots, et 78 phrases ont une traduction piège au sens inversé (« Séoul est plus chaud que Jeju » au lieu de « Jeju est plus chaud que Séoul ») : il faut comprendre le sens, pas seulement reconnaître un mot. Même chose dans la partie Écoute et Lecture de l'examen blanc ;
   - **Prononciation** : 40 mots pour s'entraîner aux règles (liaison, aspiration, nasalisation, consonnes tendues, finales doubles…), avec l'explication de la règle ;
   - **Répète et compare** : s'enregistrer avec le micro, puis réécouter le modèle et sa propre voix. L'enregistrement reste sur l'appareil, il n'est ni envoyé ni gardé.
-- **Défis** : chrono de 60 secondes et **examen blanc** :
-  - 30 questions en 4 parties : vocabulaire (12), grammaire (8), écoute (6, chaque son s'écoute 2 fois au maximum), lecture (4) ;
-  - 20 minutes, ou sans chrono si l'option « Masquer le mode Chrono » est cochée ;
+- **Défis** : chrono de 60 secondes et **examen blanc** (niveau difficile) :
+  - 40 questions en 5 parties : vocabulaire (10), mots en contexte (6, phrase à compléter), grammaire (10, dont 4 où il faut choisir la phrase entière correcte), écoute (8, chaque son s'écoute 2 fois au maximum), lecture (6, dans les deux sens : coréen → français et français → coréen) ;
+  - 25 minutes, soit 37 secondes et demie par question, ou sans chrono si l'option « Masquer le mode Chrono » est cochée ;
+  - toutes les mauvaises réponses sont des pièges (mots qui se ressemblent, phrases au sens inversé, phrases coréennes presque identiques) ;
   - on peut revenir en arrière, changer une réponse, marquer une question et voir la vue d'ensemble ;
-  - le bilan donne la note sur 20, le score par partie, les leçons à revoir en priorité, les corrections avec l'audio et la comparaison avec l'examen précédent.
+  - le bilan donne la note sur 20, le score par partie, les leçons à revoir en priorité, les corrections avec l'audio, la comparaison avec l'examen précédent, et un bouton **« Refaire mes erreurs »** (sans chrono, ne compte pas dans l'historique).
 
   Ce n'est pas le format officiel de l'examen, seulement un entraînement.
 - **Révision du jour** : répétition espacée. Chaque mot revient le lendemain, puis 2, 4, 8 et 16 jours après tant qu'il est réussi.
