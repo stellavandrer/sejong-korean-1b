@@ -49,6 +49,8 @@ Les mauvaises réponses ne sont jamais tirées au hasard :
 - **Intrus** : l'intrus ressemble aux mots du groupe ;
 - **Quiz de grammaire, Prononciation, Expressions** : erreurs typiques écrites à la main, et jamais une deuxième bonne réponse.
 
+Après chaque réponse (Quiz, Chrono, Révision du jour, Écoute, Phrases à compléter, Expressions), **la traduction s'affiche sous chacun des 4 choix**, bonne ou mauvaise réponse : on apprend aussi les mots qu'on ne connaissait pas.
+
 ## Audio
 
 Chaque mot (1A et 1B), chaque phrase d'exemple, chaque exemple de grammaire et chaque mot de l'exercice de prononciation a son fichier audio : 2 228 fichiers MP3 dans le dossier `audio/` (36 Mo).

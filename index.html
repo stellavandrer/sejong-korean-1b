@@ -96,6 +96,7 @@ input[type=range]{height:44px;width:100%}input[type=checkbox]{width:22px;height:
 .fy{margin-bottom:4px}.fyr{width:100%;justify-content:flex-start!important;gap:12px;padding:12px 14px;border-radius:18px;text-align:left;margin-top:10px;min-height:64px}.fyr>span:nth-child(2){flex:1;min-width:0}.fyr b{display:block}.fyr small{display:block;color:var(--mut)}
 .fyr.first{background:var(--acc);border-color:var(--acc);color:var(--onacc);box-shadow:0 4px 0 color-mix(in srgb,var(--acc) 70%,#000)}.fyr.first small{color:inherit;opacity:.92}.fyr.first .ti{background:color-mix(in srgb,var(--onacc) 18%,transparent);color:var(--onacc)}
 .endc .stats{grid-template-columns:repeat(3,1fr);margin:18px 0 6px}.endc .stat{padding:12px 6px}.endc .stat b{font-size:22px}.goalok{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:6px 12px;border-radius:999px;background:var(--ok);color:var(--okt);font-weight:700}
+.ch .gl{display:block;font-size:.85em;font-weight:400;margin-top:4px;opacity:.85;font-family:inherit}
 .ex mark{background:#ffe27a;color:#2a2200;border-radius:6px;padding:0 4px}
 </style></head><body>
 <header class="appbar"><div class="in"><button id="bk" class="icon" aria-label="Retour" hidden></button><div class="brand"><div class="seal" aria-hidden="true">한</div><h1><small>SEJONG 1B</small><span id="ttl">Révisions</span></h1></div><select id="sc" aria-label="Leçons à réviser"></select><button id="scb" aria-haspopup="dialog" hidden></button></div></header>
@@ -208,7 +209,7 @@ function drawQ(){const{w,fr,opts,txt}=K.q,t=K.timed;
  ${opts.map((o,i)=>`<button class="ch ${fr?'':'ko'}" data-i="${i}"><b>${i+1}</b> · ${txt(o)}</button>`).join('')}<div id="fbk"></div></div>`);
  document.querySelectorAll('.ch').forEach(b=>b.onclick=()=>pick(+b.dataset.i));if(!K.listen)$('#app').insertAdjacentHTML('afterbegin',qt());if(K.listen){$('#pl').onclick=()=>speak(w.ko);speak(w.ko)}else if(fr&&!t)auto(w.ko)}
 function pick(i){if(K.done||!K.q.opts[i])return;K.done=true;const q=K.q,ok=q.txt(q.opts[i])===q.ans;rec(q.w,ok);if(ok)K.s++;else K.miss.push(q.w);
- document.querySelectorAll('.ch').forEach((b,j)=>{b.disabled=true;if(q.txt(q.opts[j])===q.ans)b.classList.add('good');else if(j===i)b.classList.add('bad')});
+ document.querySelectorAll('.ch').forEach((b,j)=>{b.disabled=true;if(q.txt(q.opts[j])===q.ans)b.classList.add('good');else if(j===i)b.classList.add('bad')});glossBtns(q.opts.map(o=>q.fr?o.ko:o.fr),q.fr);
  $('#fbk').innerHTML=`<div class="fb ${ok?'good':'bad'}">${ok?'Bonne réponse !':'Réponse : <b>'+q.ans+'</b>'} <span class="mut">(<span class="ko">${q.w.ko}</span> = ${q.w.fr})</span>${sb(q.w.ko)}</div>`+(K.timed?'':'<div class="bar" style="margin-top:10px"><button class="p" id="nq">'+(K.i+1>=K.n?'Résultat':'Suivante →')+'</button></div>');
  if(!K.timed&&!q.fr)auto(q.w.ko);if(K.timed)setTimeout(()=>{K.i++;if(K.t>0)ask()},ok?350:900);else $('#nq').onclick=nextQ}
 function nextQ(){K.i++;K.i>=K.n?endQ():ask()}
@@ -276,7 +277,7 @@ function fq(){const x=K.d[K.i],a=exa(x);let o;if(x[4]){const sf=sh(EX.filter(y=>
  set(`<div class='card'><div class='bar' style='justify-content:space-between;margin:0'><span class='mut'>Phrase ${K.i+1} / ${K.n}</span><span class='mut'>Score : ${K.s}</span></div><div class='pb'><i style='width:${K.i/K.n*100}%'></i></div><div class='c'><div class='mut'>Complète la phrase</div><div class='bl ko'>${x[1].replace('___','<u>&emsp;&emsp;</u>')}</div><div class='mut'>${x[2]}</div></div>${o.map((t,i)=>`<button class='ch ko' data-i='${i}'>${t}</button>`).join('')}<div id='fbk'></div></div>`);
  document.querySelectorAll('.ch').forEach(b=>b.onclick=()=>fp(+b.dataset.i))}
 function fp(i){if(K.done)return;K.done=true;const x=K.x,ok=K.o[i]===exa(x);rec(A.find(w=>w.ko===x[3]&&w.l===x[0]),ok);if(ok)K.s++;
- document.querySelectorAll('.ch').forEach((b,j)=>{b.disabled=true;if(K.o[j]===exa(x))b.classList.add('good');else if(j===i)b.classList.add('bad')});
+ document.querySelectorAll('.ch').forEach((b,j)=>{b.disabled=true;if(K.o[j]===exa(x))b.classList.add('good');else if(j===i)b.classList.add('bad')});glossBtns(K.o.map(glossKo),false);
  $('#fbk').innerHTML=`<div class='fb ${ok?'good':'bad'}'>${ok?'Bien joué !':'Réponse : <b class="ko">'+exa(x)+'</b>'}<div class='bl ko'>${x[1].replace('___','<b>'+exa(x)+'</b>')}${sb(x[1].replace('___',exa(x)))}</div></div><div class='bar dock'><button class='p' id='nq'>${K.i+1>=K.n?'Résultat':'Suivante →'}</button></div>`;auto(x[1].replace('___',exa(x)));
  $('#nq').onclick=()=>{K.i++;K.i>=K.n?fin(K.s,K.n,'fill'):fq()}}
 // Écoute
@@ -587,7 +588,7 @@ function xq(){const x=K.d[K.i];K.x=x;K.o=xopts(x);K.done=false;const bf=x.parts.
  set(`<div class='card'>${hd('Expression')}<div class='c'><div class='mut' style='margin-top:12px'>Complète l’expression</div><div class='bl'>${x.w.fr}</div><div class='bl ko'>${bf} <u>&emsp;&emsp;&emsp;</u> ${af}</div></div>${K.o.map((t,i)=>`<button class='ch ko' data-i='${i}'><b>${i+1}</b> · ${t}</button>`).join('')}<div id='fbk'></div></div>`);
  document.querySelectorAll('.ch').forEach(b=>b.onclick=()=>xp(+b.dataset.i))}
 function xp(i){if(K.done)return;K.done=true;const x=K.x,ans=x.parts[x.b],ok=K.o[i]===ans;if(ok)K.s++;rec(x.w,ok);
- document.querySelectorAll('.ch').forEach((b,j)=>{b.disabled=true;if(K.o[j]===ans)b.classList.add('good');else if(j===i)b.classList.add('bad')});
+ document.querySelectorAll('.ch').forEach((b,j)=>{b.disabled=true;if(K.o[j]===ans)b.classList.add('good');else if(j===i)b.classList.add('bad')});glossBtns(K.o.map(t=>{const w=A.find(w=>w.ko===t);if(w)return w.fr;const y=EXPR.find(y=>y.parts[y.b]===t);return y?y.w.ko+' : '+y.w.fr:''}),false);
  $('#fbk').innerHTML=`<div class='fb ${ok?'good':'bad'}'>${ok?'Bien joué !':'Réponse : <b class="ko">'+ans+'</b>'}<div class='bl ko'>${x.w.ko}${sb(x.w.ko)}</div><div>${x.w.fr}</div></div><div class='bar dock'><button class='p' id='nq'>${K.i+1>=K.n?'Résultat':'Suivante →'}</button></div>`;auto(x.w.ko);
  $('#nq').onclick=()=>{K.i++;K.i>=K.n?fin(K.s,K.n,'expr'):xq()}}
 
@@ -615,6 +616,10 @@ function needOf(after){if(/^(을|이|은|과|으로|이에요|이야|이라|이�
 function fillOpts(x){const a=x[3],need=needOf((x[1].split('___')[1]||'')),ok=k=>{const f=batchim(k);if(f<0||!need)return true;return need==='B'?f>0:need==='V'?f===0:(f===0||f===8)};
  const cand=A.filter(w=>w.ko!==a&&!w.ko.endsWith('다')&&!w.ko.includes(' ')&&ok(w.ko)).map(w=>[w.ko,(w.l===x[0]?.6:0)+soundSim(a,w.ko)*.6+Math.random()*.5]).sort((p,q)=>q[1]-p[1]),seen=new Set([a]),pick=[];
  for(const[k]of cand){if(pick.length>=3)break;if(!seen.has(k)){seen.add(k);pick.push(k)}}return sh([a,...pick])}
+
+// ===== Après la réponse : la traduction s'affiche sous CHAQUE choix (demande d'un élève) =====
+function glossBtns(list,ko){document.querySelectorAll('.ch').forEach((b,j)=>{const t=list[j];if(!t||b.querySelector('.gl'))return;const g=document.createElement('span');g.className='gl'+(ko?' ko':'');g.lang=ko?'ko':'fr';g.textContent=t;b.appendChild(g)})}
+function glossKo(t){const w=A.find(w=>w.ko===t);if(w)return w.fr;const y=EX.find(y=>exa(y)===t);if(y){const v=A.find(w=>w.ko===y[3]);return v?v.ko+' : '+v.fr:''}return''}
 addEventListener('popstate',()=>go(location.hash.slice(1)||'home',1));
 document.querySelector('h1 small').textContent='SEJONG '+BK;document.title='Sejong '+BK+' : révisions';
 apply();{const h=location.hash.slice(1);if(!V[h]){try{history.replaceState(null,'','#home')}catch(e){}}go(V[h]?h:'home',1)}
