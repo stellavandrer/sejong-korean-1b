@@ -13,6 +13,7 @@ Cinq onglets en bas de l'écran, comme dans une application. Chaque écran a sa 
 - **Exercices** : en haut, le bloc **« Pour toi aujourd'hui »** propose la révision du jour, la leçon la plus faible (d'après le dernier examen blanc ou tes erreurs) et ton dernier exercice ; en dessous, toutes les activités rangées par catégorie.
 - **Fin d'exercice** : score, XP gagnés, mots acquis, série, objectif du jour, et un bouton vers l'exercice suivant.
 - **Cours** : cours de grammaire du manuel choisi, une leçon à la fois, avec conseils et pièges à éviter, puis un quiz de grammaire et un exercice de mots en ordre.
+- **Conjugaison** (onglet Cours, et Exercices) : une fiche qui explique comment passer de 보다 à 봐요 (la dernière voyelle ㅏ ou ㅗ appelle 아요, les autres 어요, puis les fusions ㅗ + 아 → ㅘ, ㅜ + 어 → ㅝ, ㅣ + 어 → ㅕ…), 하다 → 해요, le passé, le style formel -습니다 / -ㅂ니다 et les irréguliers (ㅡ, ㅂ, ㄷ, 르, ㅅ, ㅎ) avec des astuces pour les retenir et les « faux amis » réguliers. Un **conjugueur** donne les 3 formes de n'importe quel verbe avec la règle appliquée, et l'exercice **Conjuguer** fait conjuguer les verbes du manuel choisi (choix pièges : mauvaise voyelle, irrégulier oublié ou appliqué à tort, mauvais temps), avec l'explication après chaque réponse et l'audio.
 - **Progrès** : mots acquis, badges (un par leçon), records, liste des mots difficiles.
 - **Réglages** : confort de lecture, export et import de la progression, effacement des données.
 
