@@ -1,0 +1,17 @@
+{
+  "name": "Sejong : révisions (non officiel)",
+  "short_name": "Sejong",
+  "description": "Réviser les manuels Sejong 1A à 3B : vocabulaire, grammaire, écoute, conjugaison, examen blanc.",
+  "lang": "fr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#faf9f4",
+  "theme_color": "#ad431e",
+  "icons": [
+    {"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}
