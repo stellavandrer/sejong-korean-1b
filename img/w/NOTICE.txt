@@ -1,0 +1,3 @@
+Illustrations (fichiers e-*.webp) : Noto Emoji, © Google, licence Apache 2.0
+https://github.com/googlefonts/noto-emoji
+Photos (autres fichiers .webp) : créées pour Korean Stories par Design by Stelva.

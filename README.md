@@ -5,6 +5,10 @@ Application web de révision des manuels **Sejong Korean 1A** (leçons 1 à 10),
 On choisit le manuel dans le panneau « Je révise » en haut de l'écran. Chaque manuel garde **sa propre progression** (série, XP, mots acquis, examens) : passer de l'un à l'autre n'efface rien.
 Projet d'élèves, **non officiel** : il n'est pas affilié aux éditeurs du manuel.
 
+## Droit d'auteur
+
+© 2026 [Design by Stelva](https://designbystelva.com). Tous droits réservés : l'application (code, conception, explications, exercices, phrases d'exemple) ne peut pas être copiée ni réutilisée sans autorisation. Les manuels Sejong Korean et leurs audios appartiennent à leurs auteurs et éditeurs ; ils ne sont pas hébergés ici. Images : photos créées pour Korean Stories (Design by Stelva) ; illustrations Noto Emoji © Google, licence Apache 2.0 (`img/w/NOTICE.txt`).
+
 ## Navigation
 
 Cinq onglets en bas de l'écran, comme dans une application. Chaque écran a sa propre adresse (`#quiz`, `#dict`…) : le bouton « retour » du navigateur ou du téléphone ramène à l'écran précédent.
@@ -14,6 +18,7 @@ Cinq onglets en bas de l'écran, comme dans une application. Chaque écran a sa 
 - **Fin d'exercice** : score, XP gagnés, mots acquis, série, objectif du jour, et un bouton vers l'exercice suivant.
 - **Cours** : cours de grammaire du manuel choisi, une leçon à la fois, avec conseils et pièges à éviter, puis un quiz de grammaire et un exercice de mots en ordre.
 - **Livres officiels** (onglet Cours, et Exercices > Apprendre) : pour le manuel choisi, des liens vers les pages officielles du portail Nuri Sejong Hakdang (manuel, cahier d'exercices 익힘책, activités supplémentaires 더하기 활동), où l'on lit les livres en ligne et télécharge les audios. Aucun livre n'est hébergé dans l'appli : ils appartiennent à l'Institut national de la langue coréenne (국립국어원), licence KOGL type 4 (source citée, usage non commercial, pas de modification).
+- **Un mot, une image** : environ 300 mots concrets (nourriture, objets, lieux, vêtements, pays…) ont une image : au dos des cartes, à côté du mot dans la fiche (masquée avec « Cacher les traductions »), et dans l'exercice **Images** (on voit l'image, on retrouve le mot coréen). Les manuels 1A et 1B en ont le plus ; 2B, 3A et 3B surtout des expressions, donc moins. Photos créées pour Korean Stories (Design by Stelva) et illustrations Noto Emoji (© Google, Apache 2.0).
 - **Conjugaison** (onglet Cours, et Exercices) : une fiche qui explique comment passer de 보다 à 봐요 (la dernière voyelle ㅏ ou ㅗ appelle 아요, les autres 어요, puis les fusions ㅗ + 아 → ㅘ, ㅜ + 어 → ㅝ, ㅣ + 어 → ㅕ…), 하다 → 해요, le passé, le style formel -습니다 / -ㅂ니다, **les autres terminaisons utiles** (-(으)세요, -(으)ㄹ 거예요, -고 있어요, -(으)면, -지만, -아/어서) et les irréguliers (ㅡ, ㅂ, ㄷ, 르, ㅅ, ㅎ) avec des astuces pour les retenir et les « faux amis » réguliers. Un **conjugueur** donne les 9 formes de n'importe quel verbe avec la règle appliquée, et l'exercice **Conjuguer** fait conjuguer les verbes du manuel choisi (choix pièges : mauvaise voyelle, irrégulier oublié ou appliqué à tort, ㅇ intercalé à tort, mauvaise terminaison), avec l'explication après chaque réponse et l'audio.
 - **Progrès** : mots acquis, badges (un par leçon), records, liste des mots difficiles.
 - **Sur ton téléphone** : l'appli s'installe sur l'écran d'accueil (iPhone : Safari > Partager > « Sur l'écran d'accueil » ; Android : Chrome > menu ⋮ > « Installer l'application »). Une carte l'explique sur l'accueil et dans les Réglages. Elle ouvre l'appli en plein écran avec son icône, mais ne fonctionne pas hors connexion.
