@@ -1,17 +1,31 @@
 {
+  "id": "./",
   "name": "Sejong : révisions (non officiel)",
   "short_name": "Sejong",
   "description": "Réviser les manuels Sejong 1A à 3B : vocabulaire, grammaire, écoute, conjugaison, examen blanc.",
   "lang": "fr",
+  "dir": "ltr",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "orientation": "portrait",
+  "orientation": "any",
   "background_color": "#faf9f4",
   "theme_color": "#ad431e",
+  "categories": ["education"],
   "icons": [
     {"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
     {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
     {"src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ],
+  "shortcuts": [
+    {"name": "Révision du jour", "url": "./#daily", "icons": [{"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png"}]},
+    {"name": "Examen blanc", "url": "./#exam", "icons": [{"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png"}]},
+    {"name": "Conjuguer", "url": "./#conjq", "icons": [{"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png"}]}
+  ],
+  "screenshots": [
+    {"src": "shots/narrow-home.png", "sizes": "540x960", "type": "image/png", "form_factor": "narrow", "label": "Accueil"},
+    {"src": "shots/narrow-conj.png", "sizes": "540x960", "type": "image/png", "form_factor": "narrow", "label": "Fiche de conjugaison"},
+    {"src": "shots/wide-home.png", "sizes": "1280x720", "type": "image/png", "form_factor": "wide", "label": "Accueil sur ordinateur"},
+    {"src": "shots/wide-conj.png", "sizes": "1280x720", "type": "image/png", "form_factor": "wide", "label": "Fiche de conjugaison sur ordinateur"}
   ]
 }
