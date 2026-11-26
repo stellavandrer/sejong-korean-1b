@@ -237,11 +237,11 @@ V.speed=()=>{K={d:sh(pool()),i:0,s:0,t:60,miss:[],timed:true};ask();T=setInterva
 V.write=()=>{if(S.wm==='s')return WS();K={d:sh(pool()),i:0,s:0,hint:0};wr()};
 function wr(){const w=K.d[K.i%K.d.length];K.w=w;
  set(`${wt()}<div class="card c"><span class="pill">Leçon ${w.l}</span><div class="mut" style="margin-top:12px">Écris en coréen :</div><div class="big">${mk(w.fr)}</div><input type="text" id="wi" aria-label="Ta réponse en coréen" class="ko" lang="ko" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="한국어로 쓰기">
- <div id="fbk"></div><div class="bar" style="justify-content:center;margin-top:12px"><button id="ht">${ic("bulb")} Indice</button><button class="p" id="ck">Vérifier</button><button id="sk">Passer</button></div><p class="mut">Active le clavier coréen de ton appareil. Score : ${K.s}</p></div>`);
- const inp=$('#wi');inp.focus();K.done=false;
+ <div id="fbk"></div><div class="bar" style="justify-content:center;margin-top:12px"><button id="ht">${ic("bulb")} Indice</button><button class="p" id="ck">Vérifier</button><button id="sk">Passer</button></div><p class="mut">Touche le champ pour écrire en coréen. Score : ${K.s}</p>${kbHelp()}</div>`);
+ const inp=$('#wi');focusIn(inp);K.done=false;
  $('#ht').onclick=()=>{K.hint=1;$('#fbk').innerHTML=`<div class="fb">Commence par <b class="ko">${[...w.ko.replace(/\s/g,'')][0]}</b> · ${[...w.ko.replace(/\s/g,'')].length} syllabes</div>`};
- const go1=()=>{if(K.done){K.i++;wr();return}const ok=inp.value.replace(/\s/g,'')===w.ko.replace(/\s/g,'');K.done=true;rec(w,ok&&!K.hint);if(ok)K.s++;K.hint=0;$('#fbk').innerHTML=`<div class="fb ${ok?'good':'bad'}">${ok?'Correct !':'Pas tout à fait.'} Réponse : <b class="ko">${w.ko}</b></div>`;$('#fbk').firstElementChild.insertAdjacentHTML('beforeend',sb(w.ko));$('#ck').textContent='Suivant →';auto(w.ko)};
- $('#ck').onclick=go1;$('#sk').onclick=()=>{K.i++;wr()};inp.onkeydown=e=>{if(e.key==='Enter')go1()}}
+ const go1=()=>{if(K.done){K.i++;wr();return}if(!inp.value.trim())return need(inp);const ok=norm(hg(inp.value))===norm(hg(w.ko));K.done=true;rec(w,ok&&!K.hint);if(ok)K.s++;K.hint=0;$('#fbk').innerHTML=`<div class="fb ${ok?'good':'bad'}">${ok?'Correct !':'Pas tout à fait.'} Réponse : <b class="ko">${w.ko}</b></div>`;$('#fbk').firstElementChild.insertAdjacentHTML('beforeend',sb(w.ko));$('#ck').textContent='Suivant →';auto(w.ko)};
+ $('#ck').onclick=go1;$('#sk').onclick=()=>{K.i++;wr()};typed(inp,go1)}
 // Pairs
 V.pairs=()=>{const d=sh(pool()).slice(0,8),tiles=sh(d.flatMap((w,i)=>[{i,t:w.ko,ko:1},{i,t:mk(w.fr)}]));K={tiles,sel:null,left:d.length,moves:0,t0:Date.now()};pr()};
 function pr(){set(`<div class="card"><div class="bar" style="justify-content:space-between;margin:0 0 10px"><span class="mut">Associe chaque mot coréen à sa traduction</span><span class="mut">Coups : ${K.moves}</span></div><div class="pairs">${K.tiles.map((x,j)=>`<button data-j="${j}" class="${x.ko?'ko':''} ${x.done?'done':''} ${K.sel===j?'sel':''}">${x.t}</button>`).join('')}</div></div>`);
@@ -320,12 +320,12 @@ const norm=s=>s.replace(/[ \s.,!?'’]/g,'');
 function lev(a,b){const m=[...a],n=[...b];let p=Array.from({length:n.length+1},(_,j)=>j);for(let i=1;i<=m.length;i++){const c=[i];for(let j=1;j<=n.length;j++)c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(m[i-1]===n[j-1]?0:1));p=c}return p[n.length]}
 function WS(){const P=pool(),d=sh(EX.filter(x=>P.some(w=>w.ko===x[3]&&w.l===x[0])));if(!d.length){set(`<div class='card c'>${wt()}<p>Pas de phrases pour cette sélection : choisis des leçons entières.</p></div>`);return}K={d,i:0,s:0,n:Math.min(10,d.length),hint:0};ws()}
 function ws(){const x=K.d[K.i],full=x[1].replace('___',exa(x)),w=A.find(w=>w.ko===x[3]&&w.l===x[0]);K.done=false;
- set(`<div class='card c'>${wt()}<div class='bar' style='justify-content:space-between;margin:0'><span class='mut'>Phrase ${K.i+1} / ${K.n}</span><span class='mut'>Score : ${K.s}</span></div><div class='pb'><i style='width:${K.i/K.n*100}%'></i></div><div class='mut'>Écris cette phrase en coréen :</div><div class='bl'>${x[2]}</div><input type='text' id='wi' aria-label='Ta phrase en coréen' class='ko' lang='ko' autocomplete='off' autocapitalize='off' spellcheck='false' placeholder='한국어 문장'><div id='fbk'></div><div class='bar dock'><button id='ht'>${ic('bulb')} Mot clé</button><button class='p' id='ck'>Vérifier</button></div></div>`);
- const inp=$('#wi');inp.focus();
+ set(`<div class='card c'>${wt()}<div class='bar' style='justify-content:space-between;margin:0'><span class='mut'>Phrase ${K.i+1} / ${K.n}</span><span class='mut'>Score : ${K.s}</span></div><div class='pb'><i style='width:${K.i/K.n*100}%'></i></div><div class='mut'>Écris cette phrase en coréen :</div><div class='bl'>${x[2]}</div><input type='text' id='wi' aria-label='Ta phrase en coréen' class='ko' lang='ko' autocomplete='off' autocapitalize='off' spellcheck='false' placeholder='한국어 문장'>${kbHelp()}<div id='fbk'></div><div class='bar dock'><button id='ht'>${ic('bulb')} Mot clé</button><button class='p' id='ck'>Vérifier</button></div></div>`);
+ const inp=$('#wi');focusIn(inp);
  $('#ht').onclick=()=>{K.hint=1;$('#fbk').innerHTML=`<div class='fb'>Mot clé : <b class='ko'>${x[3]}</b> (${w.fr})</div>`};
- const chk=()=>{if(K.done){K.i++;K.i>=K.n?fin(K.s,K.n,'write'):ws();return}const v=inp.value,dist=lev(norm(v),norm(full)),ok=dist===0;K.done=true;rec(w,ok&&!K.hint);K.hint=0;if(ok)K.s++;
+ const chk=()=>{if(K.done){K.i++;K.i>=K.n?fin(K.s,K.n,'write'):ws();return}const v=hg(inp.value);if(!v.trim())return need(inp);const dist=lev(norm(v),norm(hg(full))),ok=dist===0;K.done=true;rec(w,ok&&!K.hint);K.hint=0;if(ok)K.s++;
   $('#fbk').innerHTML=`<div class='fb ${ok?'good':'bad'}'>${ok?'Parfait !':dist<=2?'Presque ! Compare :':'Pas tout à fait.'}<div class='bl ko'>${full}</div>${ok?'':`<div class='mut ko'>Ta réponse : ${v.replace(/</g,'&lt;')||'—'}</div>`}</div>`;$('#fbk').querySelector('.bl').insertAdjacentHTML('beforeend',sb(full));auto(full);$('#ck').textContent='Suivant →'};
- $('#ck').onclick=chk;inp.onkeydown=e=>{if(e.key==='Enter')chk()}}
+ $('#ck').onclick=chk;typed(inp,chk)}
 $('#app').addEventListener('click',e=>{const b=e.target.closest('[data-wm]');if(b){S.wm=b.dataset.wm;save();go('write')}});
 // Bouton rapide clair / sombre
 const isDark=()=>{const t=S.a.th;return t==='dark'||(t==='auto'&&matchMedia('(prefers-color-scheme: dark)').matches)};
@@ -673,6 +673,20 @@ function pp2(i){if(K.done)return;K.done=true;const w=K.d[K.i],ok=K.o[i].ko===w.k
  $('#fbk').innerHTML=`<div class='fb ${ok?'good':'bad'}'>${ok?'Bien joué !':'Réponse :'} <b class='ko'>${w.ko}</b>${sb(w.ko)}<p style='margin:6px 0 0'>${mk(w.fr)}</p></div><div class='bar dock'><button class='p' id='nq'>${K.i+1>=K.n?'Résultat':'Suivante →'}</button></div>`;auto(w.ko);
  $('#nq').onclick=()=>{K.i++;K.i>=K.n?fin(K.s,K.n,'pic'):pq2()}}
 
+// Réponses écrites au clavier coréen : compose les jamo isolés (ㅈㅏㅂ → 잡), attend la fin de la saisie en cours et valide avec la touche Entrée / « OK » du téléphone
+const HGL='ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ',HGV='ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ',HGT=['','ㄱ','ㄲ','ㄳ','ㄴ','ㄵ','ㄶ','ㄷ','ㄹ','ㄺ','ㄻ','ㄼ','ㄽ','ㄾ','ㄿ','ㅀ','ㅁ','ㅂ','ㅄ','ㅅ','ㅆ','ㅇ','ㅈ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
+const HGVC={'ㅗㅏ':'ㅘ','ㅗㅐ':'ㅙ','ㅗㅣ':'ㅚ','ㅜㅓ':'ㅝ','ㅜㅔ':'ㅞ','ㅜㅣ':'ㅟ','ㅡㅣ':'ㅢ'},HGTC={'ㄱㅅ':'ㄳ','ㄴㅈ':'ㄵ','ㄴㅎ':'ㄶ','ㄹㄱ':'ㄺ','ㄹㅁ':'ㄻ','ㄹㅂ':'ㄼ','ㄹㅅ':'ㄽ','ㄹㅌ':'ㄾ','ㄹㅍ':'ㄿ','ㄹㅎ':'ㅀ','ㅂㅅ':'ㅄ'};
+function hg(str){const a=[...String(str).normalize('NFC')],out=[],isV=c=>c!==undefined&&HGV.includes(c);let i=0;
+ while(i<a.length){const c=a[i],l=HGL.indexOf(c);if(l>=0&&isV(a[i+1])){let vi=HGV.indexOf(a[i+1]),j=i+2;if(j<a.length&&HGVC[HGV[vi]+a[j]]){vi=HGV.indexOf(HGVC[HGV[vi]+a[j]]);j++}
+   let ti=0;if(j<a.length&&HGT.indexOf(a[j])>0&&!isV(a[j+1])){ti=HGT.indexOf(a[j]);j++;if(j<a.length&&HGTC[HGT[ti]+a[j]]&&!isV(a[j+1])){ti=HGT.indexOf(HGTC[HGT[ti]+a[j]]);j++}}
+   out.push(String.fromCharCode(0xAC00+(l*21+vi)*28+ti));i=j}else{out.push(c);i++}}return out.join('')}
+function typed(inp,fn){let comp=false;inp.addEventListener('compositionstart',()=>{comp=true});inp.addEventListener('compositionend',()=>{comp=false});
+ const f=document.createElement('form');f.noValidate=true;f.style.cssText='margin:0;width:100%';const had=document.activeElement===inp;inp.parentNode.insertBefore(f,inp);f.appendChild(inp);inp.enterKeyHint='done';if(had)inp.focus();
+ const go=()=>{if(comp){setTimeout(go,80);return}fn()};f.addEventListener('submit',e=>{e.preventDefault();go()})}
+const touch=()=>{try{return matchMedia('(pointer: coarse)').matches}catch(e){return false}},focusIn=inp=>{if(!touch())inp.focus()};
+const kbHelp=()=>`<details class='mut' style='margin-top:8px;text-align:left'><summary>Le clavier ne s’ouvre pas, ou pas en coréen ?</summary><ul style='margin:6px 0 0;padding-left:1.2em;line-height:1.7'><li>Touche le champ de réponse : le clavier s’ouvre quand tu le touches.</li><li><b>iPhone</b> : Réglages › Général › Clavier › Claviers › Ajouter un clavier › Coréen. Ensuite, touche 🌐 sur le clavier pour changer de langue.</li><li><b>Android</b> : Réglages › Langues et saisie › Clavier à l’écran › Gboard › Langues › ajoute le coréen. Ensuite, touche 🌐 ou fais glisser la barre d’espace.</li><li>Sans clavier coréen, utilise plutôt les exercices à choix, ou un ordinateur.</li></ul></details>`;
+const need=inp=>{const f=$('#fbk');if(f)f.innerHTML="<div class='fb'>Écris d’abord ta réponse, puis appuie sur Vérifier.</div>";inp.focus()};
+
 const EXL={flash:['Cartes','layers','Retourne et mémorise'],sheet:['Fiche','file','La fiche du cours, à surligner'],list:['Liste','list','Tous les mots, avec recherche'],quiz:['Quiz','help','20 questions à choix'],fill:['Phrases','type','Complète la phrase'],odd:['Intrus','target','Trouve le mot qui ne va pas'],order:['Syllabes','shuffle','Reconstitue le mot'],write:['Écriture','edit','Écris en coréen'],pairs:['Paires','grid','Associe mots et traductions'],speed:['Chrono','timer','60 secondes, un maximum de points'],exam:['Examen blanc','trophy','5 parties, 40 questions, 25 min'],daily:['Révision du jour','flame','Les mots à revoir aujourd’hui'],expr:['Expressions','type','Trouve le mot qui manque'],listen:['Écoute','vol','Entends le mot, trouve le sens'],dict:['Dictée','type','Écoute et écris en coréen'],comp:['Compréhension','ear','Comprends une phrase entendue'],pron:['Prononciation','spark','Comment ça se prononce vraiment ?'],rep:['Répète et compare','mic','Enregistre-toi et compare'],gram:['Quiz de grammaire','target','Choisis la bonne forme'],gord:['Mots en ordre','shuffle','Remets la phrase en ordre'],conj:['Conjugaison','book','La méthode et les irréguliers'],res:['Livres officiels','list','Manuels, cahiers et audios'],pic:['Images','grid','Quel mot pour cette image ?'],inst:['Installer l’appli','grid','Sur téléphone et ordinateur'],conjq:['Conjuguer','edit','보다 → 봐요 : à toi !']};
 const EXER=new Set(['expr','dict','comp','pron','rep','listen','flash','quiz','fill','odd','order','write','pairs','speed','exam','daily','gram','gord','conjq','pic']);
 const TABS=[['home','Accueil','home'],['hub','Exercices','layers'],['course','Cours','book'],['stats','Progrès','trophy'],['set','Réglages','sliders']];
@@ -751,12 +765,12 @@ const none=(k,v)=>set(`${k?mt(k,v):''}<div class='card c'><p>Rien à travailler 
 // Dictée
 V.dict=()=>{const d=items('dm');if(!d.length)return none('dm','dict');K={d,i:0,s:0,n:Math.min(S.dm==='s'?8:15,d.length),ph:S.dm==='s'};dq()};
 function dq(){const x=K.d[K.i];K.x=x;K.done=false;K.hint=0;
- set(`${mt('dm','dict')}<div class='card c'>${hd(K.ph?'Phrase':'Mot')}<div class='mut' style='margin-top:12px'>Écoute et écris en coréen</div>${lb(x.ko)}<input type='text' id='wi' class='ko' lang='ko' autocomplete='off' autocapitalize='off' spellcheck='false' aria-label='Ce que tu entends, en coréen' placeholder='듣고 쓰기'><div id='fbk'></div><div class='bar dock'><button id='ht'>${ic('bulb')} Indice</button><button class='p' id='ck'>Vérifier</button></div><p class='mut'>Active le clavier coréen de ton appareil.</p></div>`);
- speak(x.ko);const inp=$('#wi');inp.focus();
+ set(`${mt('dm','dict')}<div class='card c'>${hd(K.ph?'Phrase':'Mot')}<div class='mut' style='margin-top:12px'>Écoute et écris en coréen</div>${lb(x.ko)}<input type='text' id='wi' class='ko' lang='ko' autocomplete='off' autocapitalize='off' spellcheck='false' aria-label='Ce que tu entends, en coréen' placeholder='듣고 쓰기'><div id='fbk'></div><div class='bar dock'><button id='ht'>${ic('bulb')} Indice</button><button class='p' id='ck'>Vérifier</button></div><p class='mut'>Touche le champ pour écrire en coréen.</p>${kbHelp()}</div>`);
+ speak(x.ko);const inp=$('#wi');focusIn(inp);
  $('#ht').onclick=()=>{K.hint=1;$('#fbk').innerHTML=`<div class='fb'>Sens : ${K.ph?x.fr:mk(x.fr)}</div>`};
- const chk=()=>{if(K.done){K.i++;K.i>=K.n?fin(K.s,K.n,'dict'):dq();return}const v=inp.value,dist=lev(norm(v),norm(x.ko)),ok=dist===0;K.done=true;if(ok)K.s++;if(x.w)rec(x.w,ok&&!K.hint);else tick(ok&&!K.hint);
+ const chk=()=>{if(K.done){K.i++;K.i>=K.n?fin(K.s,K.n,'dict'):dq();return}const v=hg(inp.value);if(!v.trim())return need(inp);const dist=lev(norm(v),norm(hg(x.ko))),ok=dist===0;K.done=true;if(ok)K.s++;if(x.w)rec(x.w,ok&&!K.hint);else tick(ok&&!K.hint);
   $('#fbk').innerHTML=`<div class='fb ${ok?'good':'bad'}'>${ok?'Parfait !':dist<=2?'Presque ! Compare :':'Pas tout à fait.'}<div class='bl ko'>${x.ko}${sb(x.ko)}</div><div>${x.fr}</div>${ok?'':`<div class='mut ko'>Ta réponse : ${v.replace(/</g,'&lt;')||'—'}</div>`}</div>`;$('#ck').textContent='Suivant →';$('#ht').hidden=true};
- $('#ck').onclick=chk;inp.onkeydown=e=>{if(e.key==='Enter')chk()}}
+ $('#ck').onclick=chk;typed(inp,chk)}
 // Compréhension de phrases
 V.comp=()=>{const L=lessonsOf(),d=sh(SENT.filter(x=>L.has(x.l)));if(!d.length)return none();K={d,i:0,s:0,n:Math.min(10,d.length)};cq()};
 function cq(){const x=K.d[K.i],o=sentOpts(x);K.x=x;K.o=o;K.done=false;
